@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SortAlgorithm_UI"
         mc:Ignorable="d"
+        Background="LightGray"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         
