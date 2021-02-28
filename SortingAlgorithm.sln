@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortAlgorithm_UI", "SortAlgorithm_UI\SortAlgorithm_UI.csproj", "{43C34931-96FD-467E-9F61-B251D97B9761}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SortingAlgorithm", "SortingAlgorithm\SortingAlgorithm.csproj", "{D771E1B4-2547-4327-B933-11F7C965F6EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingAlgorithm", "sortingAlgorithm1\SortingAlgorithm.csproj", "{2DA70CD4-5DE7-4547-BC2C-7B1F37CCA18E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{43C34931-96FD-467E-9F61-B251D97B9761}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43C34931-96FD-467E-9F61-B251D97B9761}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43C34931-96FD-467E-9F61-B251D97B9761}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D771E1B4-2547-4327-B933-11F7C965F6EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D771E1B4-2547-4327-B933-11F7C965F6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D771E1B4-2547-4327-B933-11F7C965F6EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D771E1B4-2547-4327-B933-11F7C965F6EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DA70CD4-5DE7-4547-BC2C-7B1F37CCA18E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DA70CD4-5DE7-4547-BC2C-7B1F37CCA18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DA70CD4-5DE7-4547-BC2C-7B1F37CCA18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DA70CD4-5DE7-4547-BC2C-7B1F37CCA18E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

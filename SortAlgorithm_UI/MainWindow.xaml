@@ -8,6 +8,23 @@
         Background="LightGray"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="119*"/>
+            <ColumnDefinition Width="673*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Button" Click="Button_Click" Margin="10,10,10,381"/>
+        <ItemsControl x:Name="myLST" Grid.Column="1" Margin="10,0,0,0" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Rectangle Width="4" Height="{Binding}" Fill="BlanchedAlmond" Margin="1"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         
     </Grid>
 </Window>

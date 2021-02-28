@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SortingAlgorithm\SortingAlgorithm.csproj" />
+    <ProjectReference Include="..\sortingAlgorithm1\SortingAlgorithm.csproj" />
   </ItemGroup>
 
 </Project>

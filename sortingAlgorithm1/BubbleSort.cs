@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
-using static System.Net.Mime.MediaTypeNames;
+using System.Windows;
+//using System.Windows.Threading;
 
 namespace Sorting_algorithm
 {
@@ -16,7 +18,7 @@ namespace Sorting_algorithm
         { }
         public BubbleSort(Collection<int> size) : base(size)
         { }
-        public override void DoSort()
+        public override void DoSort(Dispatcher d = null)
         {
             Task.Factory.StartNew(() =>
                 {
@@ -25,13 +27,19 @@ namespace Sorting_algorithm
                     {
                         IsSorted = true;
                         numOfTries++;
-                        for (int j = 0; j < i - 1; j++)
+                        for (int j = 0; j < i ; j++)
                         {
                             if (arr[j] > arr[j + 1])
                             {
                                 Print();
-                                Application.Current.Dispatcher.Invoke()
-                                Swap(j, j + 1);
+                                if (d != null)
+                                {
+                                    d.Invoke( () => Swap(j, j + 1));
+                                    Thread.Sleep(1);
+                                }
+                                else
+                                    Swap(j, j + 1);
+                                
                                 numOfSwap++;
                                 IsSorted = false;
                             }

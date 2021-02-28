@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace Sorting_algorithm
 {
@@ -13,13 +15,15 @@ namespace Sorting_algorithm
         { }
         public BogoSort(Collection<int> arr) : base(arr)
         { }
-        public override void DoSort()
+        public override void DoSort(Dispatcher d)
         {
-            while (!IsSorted())
+
+           while (!IsSorted())
             {
-                Print();
+               // Print();
                 numOfTries++;
-                Shuffle();
+                d.Invoke(() => Shuffle());
+                Thread.Sleep(3000);
             }
         }
 

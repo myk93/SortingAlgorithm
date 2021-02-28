@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading;
+using System.Windows.Threading;
+
 namespace Sorting_algorithm
 {
     public abstract class BaseSort
@@ -14,10 +16,10 @@ namespace Sorting_algorithm
         protected int numOfTries;
 
         /************************************************************************************/
-        public abstract void DoSort();
+        public abstract void DoSort(Dispatcher d = null);
 
-   
-            
+
+
         /***********************************************************/
 
         public BaseSort()
@@ -69,17 +71,29 @@ namespace Sorting_algorithm
         protected void Shuffle()
         {
             Random rand = new Random();
-            for (int i = 0; i < arr.Count; i++)
+            for (int i = 0; i < arr.Count/2 + 1; i++)
             {
-                Swap( rand.Next(arr.Count - 1), rand.Next(arr.Count - 1));
+                Swap(rand.Next(arr.Count), rand.Next(arr.Count));
             }
         }
 
+        //protected void Shuffle(Dispatcher d)
+        //{
+        //    Random rand = new Random();
+        //    for (int i = 0; i < arr.Count/2+1; i++)
+        //    {
+        //        if (d != null)
+        //        {
+        //            d.Invoke(() => Swap(rand.Next(arr.Count), rand.Next(arr.Count)));
+        //        }
+        //        else
+        //            Swap(rand.Next(arr.Count), rand.Next(arr.Count));
+        //    }
+        //    //Thread.Sleep(500);
+        //}
         protected void Swap( int a,  int b)
         {
             numOfSwap++;
-            
-            Thread.Sleep(500);
             int temp = arr[a];
             arr[a] = arr[b];
             arr[b] = temp;
