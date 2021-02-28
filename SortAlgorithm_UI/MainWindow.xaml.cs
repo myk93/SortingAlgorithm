@@ -22,20 +22,15 @@ namespace SortAlgorithm_UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<int> lst { get; set; }
-        public Sorting_algorithm.BaseSort BogoSort{ get; set; }
         public MainWindow()
         {
             InitializeComponent();
-            lst = new ObservableCollection<int>( Enumerable.Range(0,5));
-            BogoSort = new BogoSort(lst);
-            
-            myLST.ItemsSource = lst;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            BogoSort.DoSort(this.Dispatcher);
+            MessageBox.Show("please implement me using command");
+            ((BaseSort)DataContext).DoSort();
         }
     }
 }
