@@ -8,7 +8,7 @@ namespace Sorting_algorithm
     class InsertionSort : BaseSort
     {
       
-        public override void DoSort(Dispatcher d = null)
+        public override int DoSort(Dispatcher d = null)
         {
             throw new NotImplementedException();
         }

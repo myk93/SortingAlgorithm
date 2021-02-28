@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Sorting_algorithm;
+using sortingAlgorithm;
 
 namespace SortAlgorithm_UI
 {
@@ -23,19 +24,18 @@ namespace SortAlgorithm_UI
     public partial class MainWindow : Window
     {
         ObservableCollection<int> lst { get; set; }
-        public Sorting_algorithm.BaseSort BogoSort{ get; set; }
+        public Sorting_algorithm.BaseSort sort{ get; set; }
         public MainWindow()
         {
             InitializeComponent();
-            lst = new ObservableCollection<int>( Enumerable.Range(0,5));
-            BogoSort = new BogoSort(lst);
-            
+            lst = new ObservableCollection<int>( Enumerable.Range(0,15));
+            sort = new BubbleSort(lst);
             myLST.ItemsSource = lst;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            BogoSort.DoSort(this.Dispatcher);
+            sort.DoSort(this.Dispatcher);
         }
     }
 }

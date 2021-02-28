@@ -10,18 +10,17 @@ namespace Sorting_algorithm
     public abstract class BaseSort
     {
         //protected int[] arr;
-        protected Collection<int> arr;
+        public Collection<int> arr { get; set; }
 
         protected int numOfSwap;
         protected int numOfTries;
 
         /************************************************************************************/
-        public abstract void DoSort(Dispatcher d = null);
+        public abstract int DoSort(Dispatcher d = null);
 
 
 
         /***********************************************************/
-
         public BaseSort()
         {
             arr = new Collection<int>(); ;
@@ -68,7 +67,7 @@ namespace Sorting_algorithm
             return isSorted;
         }
 
-        protected void Shuffle()
+        public void Shuffle()
         {
             Random rand = new Random();
             for (int i = 0; i < arr.Count/2 + 1; i++)
@@ -108,4 +107,5 @@ namespace Sorting_algorithm
             Console.WriteLine();
         }
     }
+    
 }

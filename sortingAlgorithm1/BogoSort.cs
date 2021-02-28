@@ -16,7 +16,7 @@ namespace Sorting_algorithm
         { }
         public BogoSort(Collection<int> arr) : base(arr)
         { }
-        public override void DoSort(Dispatcher d)
+        public override int DoSort(Dispatcher d)
         {
             Task.Factory.StartNew(() =>
             {
@@ -30,6 +30,7 @@ namespace Sorting_algorithm
 
                 }
             });
+            return numOfSwap;
 
         }
 

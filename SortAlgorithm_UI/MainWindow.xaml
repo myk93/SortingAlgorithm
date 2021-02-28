@@ -9,11 +9,12 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="119*"/>
+            <ColumnDefinition Width="61*"/>
+            <ColumnDefinition Width="58*"/>
             <ColumnDefinition Width="673*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Button" Click="Button_Click" Margin="10,10,10,381"/>
-        <ItemsControl x:Name="myLST" Grid.Column="1" Margin="10,0,0,0" >
+        <Button Content="Button" Click="Button_Click" Margin="10,10,10,381" Grid.ColumnSpan="2"/>
+        <ItemsControl x:Name="myLST" Grid.Column="2" Margin="10,0,0,0" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"/>
@@ -25,6 +26,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        
+        <TextBlock HorizontalAlignment="Left" Margin="50,71,0,0" TextWrapping="Wrap" x:Name="tb" Text="" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
