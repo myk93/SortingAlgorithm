@@ -7,7 +7,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             BaseSort sort = new BogoSort (15);
-            sort.DoSort();
+            //sort.DoSort();
             Console.WriteLine("Hello World!");
             sort.Print();
         }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Threading;
 
 namespace Sorting_algorithm
 {
-    public class BogoSort :BaseSort
+    public class BogoSort : BaseSort
     {
         public BogoSort() : base()
         { }
@@ -17,14 +18,19 @@ namespace Sorting_algorithm
         { }
         public override void DoSort(Dispatcher d)
         {
-
-           while (!IsSorted())
+            Task.Factory.StartNew(() =>
             {
-               // Print();
-                numOfTries++;
-                d.Invoke(() => Shuffle());
-                Thread.Sleep(3000);
-            }
+                while (!IsSorted())
+                {
+
+                    numOfTries++;
+                    d.Invoke(() => Shuffle());
+                    Thread.Sleep(5);
+                    // Print();
+
+                }
+            });
+
         }
 
     }
