@@ -28,7 +28,7 @@ namespace SortAlgorithm_UI
         public MainWindow()
         {
             InitializeComponent();
-            lst = new ObservableCollection<int>( Enumerable.Range(0,15));
+            lst = new ObservableCollection<int>( Enumerable.Range(0,155));
             sort = new BubbleSort(lst);
             myLST.ItemsSource = lst;
         }

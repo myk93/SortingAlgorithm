@@ -26,7 +26,6 @@ namespace sortingAlgorithm
         {
             if (current.indexEnd - current.indexStart <= 1)
             {
-                Swap(current.indexStart, current.indexEnd);
                 return current;
             }
             subArray A = DoSort(new subArray(current.indexStart, current.indexEnd / 2), d);
