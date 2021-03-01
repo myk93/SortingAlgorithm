@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Sorting_algorithm;
 using sortingAlgorithm;
+using sortingAlgorithm1;
 
 namespace SortAlgorithm_UI
 {
@@ -29,7 +30,7 @@ namespace SortAlgorithm_UI
         {
             InitializeComponent();
             lst = new ObservableCollection<int>( Enumerable.Range(0,155));
-            sort = new InsertionSort(lst);
+            sort = new SelectionSort(lst);
             myLST.ItemsSource = lst;
         }
 
