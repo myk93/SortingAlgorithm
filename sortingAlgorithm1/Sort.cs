@@ -70,7 +70,7 @@ namespace Sorting_algorithm
         public void Shuffle()
         {
             Random rand = new Random();
-            for (int i = 0; i < arr.Count/2 + 1; i++)
+            for (int i = 0; i < arr.Count; i++)
             {
                 Swap(rand.Next(arr.Count), rand.Next(arr.Count));
             }
