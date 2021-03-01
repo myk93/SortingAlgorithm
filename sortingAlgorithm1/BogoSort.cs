@@ -16,7 +16,7 @@ namespace Sorting_algorithm
         { }
         public BogoSort(Collection<int> arr) : base(arr)
         { }
-        public override int DoSort(Dispatcher d)
+        public override int DoSort(Dispatcher d, int pause)
         {
             Task.Factory.StartNew(() =>
             {
@@ -25,7 +25,7 @@ namespace Sorting_algorithm
 
                     numOfTries++;
                     d.Invoke(() => Shuffle());
-                    Thread.Sleep(5);
+                    Thread.Sleep(pause);
                     // Print();
 
                 }

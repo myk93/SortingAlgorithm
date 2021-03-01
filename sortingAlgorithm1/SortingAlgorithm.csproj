@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="BogoSort.cs" />
     <Compile Include="BubbleSort.cs" />
+    <Compile Include="BucketSort.cs" />
     <Compile Include="SelectionSort.cs" />
     <Compile Include="subArray.cs" />
     <Compile Include="InsertionSort.cs" />

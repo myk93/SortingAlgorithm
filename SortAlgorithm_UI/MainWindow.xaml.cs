@@ -29,14 +29,14 @@ namespace SortAlgorithm_UI
         public MainWindow()
         {
             InitializeComponent();
-            lst = new ObservableCollection<int>( Enumerable.Range(0,155));
-            sort = new SelectionSort(lst);
+            lst = new ObservableCollection<int>( Enumerable.Range(0,300));
+            sort = new BucketSort(lst);
             myLST.ItemsSource = lst;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            sort.DoSort(this.Dispatcher);
+            sort.DoSort(this.Dispatcher,5);
         }
     }
 }
