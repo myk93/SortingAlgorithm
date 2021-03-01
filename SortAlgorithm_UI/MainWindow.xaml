@@ -12,11 +12,16 @@
         <local:ViewModel/>
     </Window.DataContext>
 
+    <Window.Resources>
+        <local:Converter x:Key="Converter"/>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="164"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+
         <StackPanel Orientation="Vertical" Margin="10">
             <Button Content="Button" Click="Button_Click" />
             <StackPanel Orientation="Horizontal">
@@ -26,7 +31,8 @@
             <Slider Minimum="3" Maximum="500" Value="{Binding ElementListSize}"/>
             <Button Content="Shuffle" Command="{Binding ShuffleCommand}" />
         </StackPanel>
-        <ItemsControl ItemsSource="{Binding ElementsList}" Grid.Column="1" Margin="10,0,0,0" >
+
+        <ItemsControl ItemsSource="{Binding ElementsList}" Grid.Column="1" Margin="20" BorderThickness="1" BorderBrush="Gray" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal"/>
@@ -34,7 +40,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Rectangle Width="4" Height="{Binding}" Fill="BlanchedAlmond" Margin="1"/>
+                    <Rectangle Width="4" Height="{Binding}" Fill="BlueViolet" Margin="1" VerticalAlignment="Bottom" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

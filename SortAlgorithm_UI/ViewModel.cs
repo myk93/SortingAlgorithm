@@ -59,9 +59,12 @@ namespace SortAlgorithm_UI
         {
             ElementListSize = 100;
             ElementsList = new ObservableCollection<int>(Enumerable.Range(0,ElementListSize));
+            Sorter = new BubbleSort(ElementsList);
 
             // commands implementation
             ShuffleCommand = new RelayCommand(Shuffle);
+
+
         }
 
         #region boiler plate

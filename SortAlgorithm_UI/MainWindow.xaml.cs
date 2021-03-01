@@ -30,7 +30,10 @@ namespace SortAlgorithm_UI
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("please implement me using command");
-            ((BaseSort)DataContext).DoSort();
+            var s =((ViewModel)DataContext).Sorter;
+            if (s.arr != ((ViewModel) DataContext).ElementsList)
+                s.arr = ((ViewModel) DataContext).ElementsList;
+            s.DoSort(this.Dispatcher);
         }
     }
 }
