@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Threading;
 
 namespace Sorting_algorithm
@@ -17,15 +19,21 @@ namespace Sorting_algorithm
 
         public override int DoSort(Dispatcher d = null)
         {
-
-            for (int i = 0; i < arr.Count; i++)
+            Task.Factory.StartNew(() =>
             {
-                for (int j = 0; j < i; j++)
+                for (int i = 0; i < arr.Count; i++)
                 {
-                    if (arr[i] < arr[j])
-                        Swap(i, j);
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (arr[i] < arr[j])
+                        {
+                            d.Invoke(() => Swap(i, j));
+                            Thread.Sleep(1);
+                        }
+                    }
                 }
             }
+            );
             return 0;
         }
     }
