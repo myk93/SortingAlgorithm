@@ -29,7 +29,7 @@ namespace SortAlgorithm_UI
         {
             InitializeComponent();
             lst = new ObservableCollection<int>( Enumerable.Range(0,155));
-            sort = new BubbleSort(lst);
+            sort = new InsertionSort(lst);
             myLST.ItemsSource = lst;
         }
 
