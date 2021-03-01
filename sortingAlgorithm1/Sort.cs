@@ -16,7 +16,7 @@ namespace Sorting_algorithm
         protected int numOfTries;
 
         /************************************************************************************/
-        public abstract int DoSort(Dispatcher d = null);
+        public abstract int DoSort(Dispatcher d = null ,int pause = 0);
 
 
 
@@ -24,11 +24,11 @@ namespace Sorting_algorithm
         public BaseSort()
         {
             arr = new Collection<int>(); ;
-            for (int i = 0; i < 15; i++)
-            {
-                arr[i] = i + 1;
-            }
-            Shuffle();
+            //for (int i = 0; i < 15; i++)
+            //{
+            //    arr[i] = i + 1;
+            //}
+            //Shuffle();
             numOfSwap = 0;
             numOfTries = 0;
         }
@@ -70,7 +70,7 @@ namespace Sorting_algorithm
         public void Shuffle()
         {
             Random rand = new Random();
-            for (int i = 0; i < arr.Count/2 + 1; i++)
+            for (int i = 0; i < arr.Count; i++)
             {
                 Swap(rand.Next(arr.Count), rand.Next(arr.Count));
             }

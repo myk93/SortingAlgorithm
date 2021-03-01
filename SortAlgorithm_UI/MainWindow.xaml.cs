@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Sorting_algorithm;
 using sortingAlgorithm;
+using sortingAlgorithm1;
 
 namespace SortAlgorithm_UI
 {
@@ -28,14 +29,14 @@ namespace SortAlgorithm_UI
         public MainWindow()
         {
             InitializeComponent();
-            lst = new ObservableCollection<int>( Enumerable.Range(0,15));
-            sort = new BubbleSort(lst);
+            lst = new ObservableCollection<int>( Enumerable.Range(0,200));
+            sort = new MergeSort(lst);
             myLST.ItemsSource = lst;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            sort.DoSort(this.Dispatcher);
+            sort.DoSort(this.Dispatcher,100);
         }
     }
 }
