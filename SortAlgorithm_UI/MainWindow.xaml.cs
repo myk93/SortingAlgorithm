@@ -29,14 +29,14 @@ namespace SortAlgorithm_UI
         public MainWindow()
         {
             InitializeComponent();
-            lst = new ObservableCollection<int>( Enumerable.Range(0,200));
-            sort = new MergeSort(lst);
+            lst = new ObservableCollection<int>( Enumerable.Range(0,2000));
+            sort = new RadixSort(lst);
             myLST.ItemsSource = lst;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            sort.DoSort(this.Dispatcher,100);
+            sort.DoSort(this.Dispatcher,5);
         }
     }
 }

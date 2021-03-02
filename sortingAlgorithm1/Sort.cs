@@ -67,6 +67,14 @@ namespace Sorting_algorithm
             return isSorted;
         }
 
+        public int Maximum()
+        {
+            int maximum = arr[0];
+            for (int i = 1; i < arr.Count; i++)
+                maximum = arr[i] > maximum ? arr[i] : maximum;
+            return maximum;
+        }
+
         public void Shuffle()
         {
             Random rand = new Random();

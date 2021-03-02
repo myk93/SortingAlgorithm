@@ -24,12 +24,11 @@ namespace sortingAlgorithm
             Task.Factory.StartNew(() =>
             {
                 Collection<int> A = mergSort(arr, d,0,arr.Count/2,arr.Count/2+1,arr.Count);
-                Thread.Sleep(1000);
                 for (int i = 0; i < A.Count; i++)
                 {
                     
                     d.Invoke(() => arr[i] = A[i]);
-                    Thread.Sleep(5);
+                    Thread.Sleep(wait);
 
                 }
             });
@@ -90,17 +89,14 @@ namespace sortingAlgorithm
             //}
             A = mergSort(A, d,a1,a3,a4,a2);
             B = mergSort(B, d, b1, b3, b4, b2);
-            
-
-            arrToSort = merge(A, B);
             for (int k = a1; k < a2; k++)
             {
                 d.Invoke(() => arr[k] = A[k - a1]);
                 Thread.Sleep(1);
             }
-            if (b2/2==0)
+            if (b2 / 2 == 0)
             {
-                for (int j = b1; j < b2+1; j++)
+                for (int j = b1; j < b2 + 1; j++)
                 {
                     d.Invoke(() => arr[j] = A[j - b1]);
                     Thread.Sleep(1);
@@ -108,13 +104,14 @@ namespace sortingAlgorithm
             }
             else
             {
-                for (int j = b1; j < b2-1; j++)
+                for (int j = b1; j < b2 - 1; j++)
                 {
                     d.Invoke(() => arr[j] = A[j - b1]);
                     Thread.Sleep(1);
                 }
             }
-            
+            arrToSort = merge(A, B);
+           
             return arrToSort;
         }
 
