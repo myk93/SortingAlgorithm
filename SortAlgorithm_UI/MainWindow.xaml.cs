@@ -1,21 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Sorting_algorithm;
-using sortingAlgorithm;
-using sortingAlgorithm1;
+﻿using System.Windows;
 
 namespace SortAlgorithm_UI
 {
@@ -24,19 +7,18 @@ namespace SortAlgorithm_UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<int> lst { get; set; }
-        public Sorting_algorithm.BaseSort sort{ get; set; }
         public MainWindow()
         {
             InitializeComponent();
-            lst = new ObservableCollection<int>( Enumerable.Range(0,2000));
-            sort = new RadixSort(lst);
-            myLST.ItemsSource = lst;
-        }
 
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            sort.DoSort(this.Dispatcher,5);
+            MessageBox.Show("please implement me using command");
+            var s = ((ViewModel)DataContext).Sorter;
+            if (s.arr != ((ViewModel)DataContext).ElementsList)
+                s.arr = ((ViewModel)DataContext).ElementsList;
+            s.DoSort(this.Dispatcher,5);
         }
     }
 }

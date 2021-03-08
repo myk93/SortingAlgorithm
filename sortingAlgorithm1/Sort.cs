@@ -74,7 +74,6 @@ namespace Sorting_algorithm
                 maximum = arr[i] > maximum ? arr[i] : maximum;
             return maximum;
         }
-
         public void Shuffle()
         {
             Random rand = new Random();
