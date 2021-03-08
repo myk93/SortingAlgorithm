@@ -33,19 +33,7 @@
             <Button Content="Shuffle" Command="{Binding ShuffleCommand}" />
         </StackPanel>
 
-        <ItemsControl ItemsSource="{Binding ElementsList}" Grid.Column="1" Margin="20" BorderThickness="1" BorderBrush="Gray" >
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Rows="1" />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Rectangle Fill="BlueViolet" Height="{Binding}" VerticalAlignment="Bottom" Margin="0.2"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-
+        <local:ChartView Grid.Column="1" Margin="20"/>
 
     </Grid>
 </Window>
