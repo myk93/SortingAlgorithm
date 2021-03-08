@@ -20,4 +20,17 @@ namespace SortAlgorithm_UI
             throw new NotImplementedException();
         }
     }
+
+    public class WidthAccordingToRation : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            return 80;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
