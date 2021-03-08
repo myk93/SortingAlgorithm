@@ -16,20 +16,19 @@ namespace Sorting_algorithm
         protected int numOfTries;
 
         /************************************************************************************/
-        public abstract void DoSort(Dispatcher d = null);
+        public abstract int DoSort(Dispatcher d = null ,int pause = 0);
 
 
 
         /***********************************************************/
-
         public BaseSort()
         {
             arr = new Collection<int>(); ;
-            for (int i = 0; i < 15; i++)
-            {
-                arr[i] = i + 1;
-            }
-            Shuffle();
+            //for (int i = 0; i < 15; i++)
+            //{
+            //    arr[i] = i + 1;
+            //}
+            //Shuffle();
             numOfSwap = 0;
             numOfTries = 0;
         }
@@ -68,10 +67,17 @@ namespace Sorting_algorithm
             return isSorted;
         }
 
+        public int Maximum()
+        {
+            int maximum = arr[0];
+            for (int i = 1; i < arr.Count; i++)
+                maximum = arr[i] > maximum ? arr[i] : maximum;
+            return maximum;
+        }
         public void Shuffle()
         {
             Random rand = new Random();
-            for (int i = 0; i < arr.Count/2 + 1; i++)
+            for (int i = 0; i < arr.Count; i++)
             {
                 Swap(rand.Next(arr.Count), rand.Next(arr.Count));
             }
@@ -108,4 +114,5 @@ namespace Sorting_algorithm
             Console.WriteLine();
         }
     }
+    
 }

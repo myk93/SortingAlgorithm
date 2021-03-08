@@ -18,7 +18,7 @@ namespace Sorting_algorithm
         { }
         public BubbleSort(Collection<int> size) : base(size)
         { }
-        public override void DoSort(Dispatcher d = null)
+        public override int DoSort(Dispatcher d = null, int pause = 0)
         {
             Task.Factory.StartNew(() =>
                 {
@@ -35,7 +35,7 @@ namespace Sorting_algorithm
                                 if (d != null)
                                 {
                                     d.Invoke( () => Swap(j, j + 1));
-                                    Thread.Sleep(1);
+                                    Thread.Sleep(pause);
                                 }
                                 else
                                     Swap(j, j + 1);
@@ -51,7 +51,7 @@ namespace Sorting_algorithm
                     }
                 }
             );
-           
+            return numOfSwap;
         }
     }
 }
