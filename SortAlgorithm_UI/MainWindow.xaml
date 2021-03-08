@@ -7,26 +7,45 @@
         mc:Ignorable="d"
         Background="LightGray"
         Title="MainWindow" Height="450" Width="800">
+
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <local:Converter x:Key="Converter"/>
+        <local:WidthAccordingToRation x:Key="WidthAccordingToRation"/>
+    </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="61*"/>
-            <ColumnDefinition Width="58*"/>
-            <ColumnDefinition Width="673*"/>
+            <ColumnDefinition Width="164"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Content="Button" Click="Button_Click" Margin="10,10,10,381" Grid.ColumnSpan="2"/>
-        <ItemsControl x:Name="myLST" Grid.Column="2" Margin="10,0,0,0" >
+
+        <StackPanel Orientation="Vertical" Margin="10">
+            <Button Content="Button" Click="Button_Click" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Number of elements: "/>
+                <TextBlock Text="{Binding ElementListSize}"/>
+            </StackPanel>
+            <Slider Minimum="3" Maximum="500" Value="{Binding ElementListSize}"/>
+            <Button Content="Shuffle" Command="{Binding ShuffleCommand}" />
+        </StackPanel>
+
+        <ItemsControl ItemsSource="{Binding ElementsList}" Grid.Column="1" Margin="20" BorderThickness="1" BorderBrush="Gray" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal"/>
+                    <UniformGrid Rows="1" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Rectangle Width="4" Height="{Binding}" Fill="BlanchedAlmond" Margin="1"/>
+                    <Rectangle Fill="BlueViolet" Height="{Binding}" VerticalAlignment="Bottom" Margin="0.2"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <TextBlock HorizontalAlignment="Left" Margin="50,71,0,0" TextWrapping="Wrap" x:Name="tb" Text="" VerticalAlignment="Top"/>
+
 
     </Grid>
 </Window>
