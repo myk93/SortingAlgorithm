@@ -6,6 +6,11 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using Sorting_algorithm;
+using sortingAlgorithm;
+using sortingAlgorithm1;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace SortAlgorithm_UI
 {
@@ -13,11 +18,23 @@ namespace SortAlgorithm_UI
     {
         // properties
         private ObservableCollection<int> _elementsList;
-        public ObservableCollection<int> ElementsList {
+        public ObservableCollection<int> ElementsList
+        {
             get { return _elementsList; }
-            set { _elementsList = value; OnPropertyChanged(); }
+            set
+            {
+                _elementsList = value;
+                if (Sorters != null)
+                    foreach (var sorter_vm in Sorters)
+                    {
+                        sorter_vm.ElementListSize = ElementListSize;
+                    }
+                OnPropertyChanged();
+            }
 
         }
+
+        public ObservableCollection<ChartView_VM> Sorters { get; set; }
 
         public int ElementListSize
         {
@@ -39,25 +56,70 @@ namespace SortAlgorithm_UI
 
 
         //Commands
-        public ICommand ShuffleCommand { get; set; }
+        public ICommand ShuffleAllCommand { get; set; }
 
-        public void Shuffle(object param)
+        public void ShuffleAll(object param)
         {
-            if (Sorter.arr != ElementsList)
-                Sorter.arr = ElementsList;
-            Sorter.Shuffle();
+            foreach (var sorter_vm in Sorters)
+            {
+                sorter_vm.Sorter.Shuffle();
+            }
+        }
+
+        public ICommand SortAllCommand { get; set; }
+
+        public void SortAll(object param)
+        {
+            var dispatcher = Dispatcher.CurrentDispatcher;
+            foreach (var sorter_vm in Sorters)
+            {
+                Task.Run(() => sorter_vm.Sorter.DoSort(dispatcher, 10));
+            }
         }
 
         // Constructor
         public ViewModel()
         {
             ElementListSize = 100;
-            ElementsList = new ObservableCollection<int>(Enumerable.Range(0,ElementListSize));
+            ElementsList = new ObservableCollection<int>(Enumerable.Range(0, ElementListSize));
             Sorter = new BubbleSort(ElementsList);
 
+            // todo: make it generic
+            // Get all types of sorter
+            var allSorter = new ObservableCollection<BaseSort>()
+            {
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+               new RadixSort(),
+            };
+
+            // Create a Chart_View_VM for each sorter
+            var vms = from sorter in allSorter
+                      select new ChartView_VM(sorter);
+
+            Sorters = new ObservableCollection<ChartView_VM>(vms);
+
             // commands implementation
-            ShuffleCommand = new RelayCommand(Shuffle);
+            ShuffleAllCommand = new RelayCommand(ShuffleAll);
+            SortAllCommand = new RelayCommand(SortAll);
         }
-        
+
     }
 }

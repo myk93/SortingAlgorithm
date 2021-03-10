@@ -27,8 +27,26 @@ namespace SortAlgorithm_UI
             get => _elementListSize;
             set
             {
+                if (ElementsList != null)
+                {
+                    if (value > _elementListSize)
+                        for (int i = 0; i < value - _elementListSize; i++)
+                            ElementsList.Add(i + _elementListSize);
+                    else
+                        for (int i = 0; i < _elementListSize - value; i++)
+                            ElementsList.RemoveAt(_elementListSize - i - 1);
+
+                    _elementListSize = value;
+
+                    for (int i = 0; i < _elementListSize; i++)
+                    {
+                        ElementsList[i] = i;
+                    }
+                }
+
+
+
                 _elementListSize = value;
-                ElementsList = new ObservableCollection<int>(Enumerable.Range(0, ElementListSize));
                 OnPropertyChanged();
             }
         }
@@ -58,7 +76,7 @@ namespace SortAlgorithm_UI
         {
             if (Sorter.arr != ElementsList)
                 Sorter.arr = ElementsList;
-            Sorter.DoSort(Dispatcher.CurrentDispatcher);
+            Sorter.DoSort(Dispatcher.CurrentDispatcher, 5);
         }
 
         public ChartView_VM()
@@ -72,10 +90,28 @@ namespace SortAlgorithm_UI
             SortCommand = new RelayCommand(Sort);
         }
 
+        public ChartView_VM(BaseSort sorter)
+        {
+            ElementListSize = 200;
+            ElementsList = new ObservableCollection<int>(Enumerable.Range(0, ElementListSize));
+
+            Sorter = sorter;
+            sorter.arr = ElementsList;
+
+            // commands implementation
+            ShuffleCommand = new RelayCommand(Shuffle);
+            SortCommand = new RelayCommand(Sort);
+        }
+
         public ChartView_VM(ObservableCollection<int> collection, BaseSort sorter)
         {
             ElementsList = collection;
             Sorter = sorter;
+        }
+
+        public override string ToString()
+        {
+            return Sorter.GetType().Name;
         }
     }
 }

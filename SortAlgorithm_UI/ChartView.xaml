@@ -7,11 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <UserControl.DataContext>
-        <local:ChartView_VM/>
-    </UserControl.DataContext>
+    <Grid Background="Transparent">
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Sort" Command="{Binding SortCommand}"/>
+                <MenuItem Header="Shuffle" Command="{Binding ShuffleCommand}"/>
+                <MenuItem Header="Sorter" ItemsSource="{Binding ElementsList}">
 
-    <Grid>
+                </MenuItem>
+            </ContextMenu>
+        </Grid.ContextMenu>
+
         <ItemsControl ItemsSource="{Binding ElementsList}" BorderThickness="1" BorderBrush="Gray" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -25,13 +31,7 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <Border BorderThickness="1" CornerRadius="5" Background="LightGray" BorderBrush="Black" Margin="35,35,0,0" Height="84" VerticalAlignment="Top" HorizontalAlignment="Left" Width="207">
-            <StackPanel Margin="5" VerticalAlignment="Center" >
-                <Button Content="Shuffle" Margin="2" Command="{Binding ShuffleCommand}"/>
-                <Slider Minimum="3" Maximum="500" Value="{Binding ElementListSize}" Margin="2"/>
-                <Button Content="Sort" Margin="2" Command="{Binding SortCommand}"/>
-            </StackPanel>
-        </Border>
-
+        <Slider Minimum="3" Maximum="500" Value="{Binding ElementListSize}"/>
+        <Label Content="{Binding }" Foreground="Blue" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left"/>
     </Grid>
 </UserControl>

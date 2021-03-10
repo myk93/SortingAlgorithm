@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sorting_algorithm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,17 @@ namespace SortAlgorithm_UI
     /// </summary>
     public partial class ChartView : UserControl
     {
+        public static readonly DependencyProperty SortProperty = DependencyProperty.Register(
+            "SortAll", typeof(BaseSort), typeof(ChartView), new PropertyMetadata(default(BaseSort)));
+
+        public BaseSort Sort
+        {
+            get { return (BaseSort) GetValue(SortProperty); }
+            set { 
+                SetValue(SortProperty, value);
+                MessageBox.Show(value.ToString());
+            }
+        }
         public ChartView()
         {
             InitializeComponent();

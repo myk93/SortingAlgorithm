@@ -24,16 +24,28 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Vertical" Margin="10">
-            <Button Content="Button" Click="Button_Click" />
+            <Button Content="Sort All" Command="{Binding SortAllCommand}" />
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Number of elements: "/>
                 <TextBlock Text="{Binding ElementListSize}"/>
             </StackPanel>
             <Slider Minimum="3" Maximum="500" Value="{Binding ElementListSize}"/>
-            <Button Content="Shuffle" Command="{Binding ShuffleCommand}" />
+            <Button Content="Shuffle" Command="{Binding ShuffleAllCommand}" />
+            <ListBox ItemsSource="{Binding Sorters}"></ListBox>
         </StackPanel>
 
-        <local:ChartView Grid.Column="1" Margin="20"/>
+        <ItemsControl Grid.Column="1"  ItemsSource="{Binding Sorters}" BorderThickness="1" BorderBrush="Gray" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:ChartView DataContext="{Binding}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
     </Grid>
 </Window>
