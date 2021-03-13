@@ -14,12 +14,11 @@
 
     <Window.Resources>
         <local:Converter x:Key="Converter"/>
-        <local:WidthAccordingToRation x:Key="WidthAccordingToRation"/>
     </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="164"/>
+            <ColumnDefinition Width="179"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 

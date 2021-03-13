@@ -83,32 +83,17 @@ namespace SortAlgorithm_UI
             ElementListSize = 100;
             ElementsList = new ObservableCollection<int>(Enumerable.Range(0, ElementListSize));
             Sorter = new BubbleSort(ElementsList);
-
-            // todo: make it generic
+            
             // Get all types of sorter
-            var allSorter = new ObservableCollection<BaseSort>()
-            {
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-               new RadixSort(),
-            };
+            var baseSortType = typeof(BaseSort);
+
+            var allSorterTypes = Assembly.GetAssembly(baseSortType).GetTypes()
+               .Where(t => !t.IsAbstract && !t.IsInterface && baseSortType.IsAssignableFrom(t));
+
+            var instancesOfSorters = from t in allSorterTypes
+                                     select Activator.CreateInstance(t) as BaseSort;
+
+            var allSorter = new ObservableCollection<BaseSort>(instancesOfSorters);
 
             // Create a Chart_View_VM for each sorter
             var vms = from sorter in allSorter

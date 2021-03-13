@@ -5,7 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SortAlgorithm_UI"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance local:ChartView_VM}"
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <local:ScaleValue x:Key="ScaleValue"/>
+        <local:ScaleToColor x:Key="ScaleToColor"/>
+    </UserControl.Resources>
 
     <Grid Background="Transparent">
         <Grid.ContextMenu>
@@ -13,12 +19,11 @@
                 <MenuItem Header="Sort" Command="{Binding SortCommand}"/>
                 <MenuItem Header="Shuffle" Command="{Binding ShuffleCommand}"/>
                 <MenuItem Header="Sorter" ItemsSource="{Binding ElementsList}">
-
                 </MenuItem>
             </ContextMenu>
         </Grid.ContextMenu>
 
-        <ItemsControl ItemsSource="{Binding ElementsList}" BorderThickness="1" BorderBrush="Gray" >
+        <ItemsControl x:Name="ItemsControl" ItemsSource="{Binding ElementsList}" BorderThickness="1" BorderBrush="Gray" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Rows="1" />
@@ -26,12 +31,26 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Rectangle Fill="BlueViolet" Height="{Binding}" VerticalAlignment="Bottom" Margin="1"/>
+                    <Rectangle VerticalAlignment="Bottom" >
+                        <Rectangle.Height>
+                            <MultiBinding Converter="{StaticResource ScaleValue}">
+                                <Binding/>
+                                <Binding ElementName="ItemsControl" Path="Items.Count"/>
+                                <Binding ElementName="ItemsControl" Path="ActualHeight"/>
+                            </MultiBinding>
+                        </Rectangle.Height>
+                        <Rectangle.Fill>
+                            <MultiBinding Converter="{StaticResource ScaleToColor}">
+                                <Binding/>
+                                <Binding ElementName="ItemsControl" Path="Items.Count"/>
+                            </MultiBinding>
+                        </Rectangle.Fill>
+                    </Rectangle>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <Slider Minimum="3" Maximum="500" Value="{Binding ElementListSize}"/>
+        <Slider Minimum="3" Maximum="2000" Value="{Binding ElementListSize}"/>
         <Label Content="{Binding }" Foreground="Blue" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left"/>
     </Grid>
 </UserControl>
