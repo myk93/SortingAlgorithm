@@ -22,37 +22,85 @@ namespace sortingAlgorithm1
         {
             Task.Factory.StartNew(() =>
             {
-                int smallIndex ;
-                int highestIndex ;
-                int t = arr.Count-1;
-            for (int i = 0; i < arr.Count / 2 ; i++)
-            {
-                smallIndex = i;
-                highestIndex = arr.Count - i -1;
-                for (int j = i; j < t; j++)
+                for (int i = 0, j = arr.Count - 1; i < j; i++, j--)
                 {
-                    if (arr[j] < arr[smallIndex])
+                    int min = arr[i], max = arr[i];
+                    int min_i = i, max_i = i;
+                    for (int k = i; k <= j; k++)
                     {
-                        smallIndex = j;
-                    }
-                    if (arr[j] > arr[highestIndex])
-                    {
-                        highestIndex = j;
+                        if (arr[k] > max)
+                        {
+                            max = arr[k];
+                            max_i = k;
+                        }
+
+                        else if (arr[k] < min)
+                        {
+                            min = arr[k];
+                            min_i = k;
+                        }
                     }
 
-                }
-                t--;
-                d.Invoke(() => 
-                {
-                    Swap(i, smallIndex);
-                    Swap(arr.Count - i - 1, highestIndex);
-                });
-                    Thread.Sleep(10);
-                  
+                    // shifting the min. 
+                    d.Invoke(() => Swap(i, min_i));
+                    Thread.Sleep(pause);
+                    // Shifting the max. The equal condition 
+                    // happens if we shifted the max to arr[min_i]  
+                    // in the previous swap. 
+                    if (arr[min_i] == max)
+                    {
+                        d.Invoke(() => Swap(j, min_i));
+                        Thread.Sleep(pause);
 
+                    }
+                    else
+                    {
+                        d.Invoke(() => Swap(j, max_i));
+                        Thread.Sleep(pause);
+                    }
                 }
+                //int smallIndex;
+                //int highestIndex;
+                //int left = 0 ;
+                //int right = arr.Count - 1;
+
+                //while (left < right)
+                //{
+                //    smallIndex = left;
+                //    highestIndex = (arr.Count - 1) - left;
+                //    for (int j = left; j < (arr.Count - 1) - left; j++)
+                //    {
+                //        if (arr[j] < arr[smallIndex])
+                //        {
+                //            smallIndex = j;
+                //        }
+                //        if (smallIndex!=left)
+                //        {
+
+                //        }
+                //        if (arr[j] > arr[highestIndex])
+                //        {
+                //            highestIndex = j;
+                //        }
+
+                //    }
+                //    d.Invoke(() =>
+                //    {
+
+                //        Swap(left, smallIndex);
+
+                //        Swap(arr.Count - left - 1, highestIndex);
+
+                //    });
+                //    left++;
+                //    right--;
+
+                //    Thread.Sleep(pause);
+
+                //    }
             }
             );
+
             return 0;
         }
     }
