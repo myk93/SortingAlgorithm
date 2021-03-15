@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Input;
 using Sorting_algorithm;
 using sortingAlgorithm;
-using sortingAlgorithm1;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Threading;
