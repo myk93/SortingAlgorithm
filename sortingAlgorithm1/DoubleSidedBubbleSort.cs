@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
-namespace sortingAlgorithm1
+namespace sortingAlgorithm
 {
     public class DoubleSidedSelectionSort : BaseSort
     {
@@ -41,13 +41,9 @@ namespace sortingAlgorithm1
                         }
                     }
 
-                    // shifting the min. 
                     d.Invoke(() => Swap(i, min_i));
                     Thread.Sleep(pause);
-                    // Shifting the max. The equal condition 
-                    // happens if we shifted the max to arr[min_i]  
-                    // in the previous swap. 
-                    if (arr[min_i] == max)
+                      if (arr[min_i] == max)
                     {
                         d.Invoke(() => Swap(j, min_i));
                         Thread.Sleep(pause);
@@ -59,48 +55,7 @@ namespace sortingAlgorithm1
                         Thread.Sleep(pause);
                     }
                 }
-                //int smallIndex;
-                //int highestIndex;
-                //int left = 0 ;
-                //int right = arr.Count - 1;
-
-                //while (left < right)
-                //{
-                //    smallIndex = left;
-                //    highestIndex = (arr.Count - 1) - left;
-                //    for (int j = left; j < (arr.Count - 1) - left; j++)
-                //    {
-                //        if (arr[j] < arr[smallIndex])
-                //        {
-                //            smallIndex = j;
-                //        }
-                //        if (smallIndex!=left)
-                //        {
-
-                //        }
-                //        if (arr[j] > arr[highestIndex])
-                //        {
-                //            highestIndex = j;
-                //        }
-
-                //    }
-                //    d.Invoke(() =>
-                //    {
-
-                //        Swap(left, smallIndex);
-
-                //        Swap(arr.Count - left - 1, highestIndex);
-
-                //    });
-                //    left++;
-                //    right--;
-
-                //    Thread.Sleep(pause);
-
-                //    }
-            }
-            );
-
+            });
             return 0;
         }
     }

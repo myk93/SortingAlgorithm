@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
-namespace sortingAlgorithm1
+namespace sortingAlgorithm
 {
     public class RadixSort :BaseSort
     {
