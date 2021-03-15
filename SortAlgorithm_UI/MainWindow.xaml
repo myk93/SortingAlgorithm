@@ -14,38 +14,37 @@
 
     <Window.Resources>
         <local:Converter x:Key="Converter"/>
-        <local:WidthAccordingToRation x:Key="WidthAccordingToRation"/>
     </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="164"/>
+            <ColumnDefinition Width="179"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Vertical" Margin="10">
-            <Button Content="Button" Click="Button_Click" />
+            <Button Content="Sort All" Command="{Binding SortAllCommand}" />
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Number of elements: "/>
                 <TextBlock Text="{Binding ElementListSize}"/>
             </StackPanel>
             <Slider Minimum="3" Maximum="500" Value="{Binding ElementListSize}"/>
-            <Button Content="Shuffle" Command="{Binding ShuffleCommand}" />
+            <Button Content="Shuffle" Command="{Binding ShuffleAllCommand}" />
+            <ListBox ItemsSource="{Binding Sorters}"></ListBox>
         </StackPanel>
 
-        <ItemsControl ItemsSource="{Binding ElementsList}" Grid.Column="1" Margin="20" BorderThickness="1" BorderBrush="Gray" >
+        <ItemsControl Grid.Column="1"  ItemsSource="{Binding Sorters}" BorderThickness="1" BorderBrush="Gray" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Rows="1" />
+                    <UniformGrid/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Rectangle Fill="BlueViolet" Height="{Binding}" VerticalAlignment="Bottom" Margin="0.2"/>
+                    <local:ChartView DataContext="{Binding}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-
 
     </Grid>
 </Window>
