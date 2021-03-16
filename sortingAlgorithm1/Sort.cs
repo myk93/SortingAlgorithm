@@ -24,12 +24,6 @@ namespace Sorting_algorithm
         /***********************************************************/
         public BaseSort()
         {
-            //arr = new Collection<int>(); ;
-            //for (int i = 0; i < 15; i++)
-            //{
-            //    arr[i] = i + 1;
-            //}
-            //Shuffle();
             numOfSwap = 0;
             numOfTries = 0;
         }
@@ -37,7 +31,7 @@ namespace Sorting_algorithm
         public BaseSort(Collection<int> collection)
         {
             //arr = collection;
-            Shuffle(collection);
+           // Shuffle(collection);
             numOfSwap = 0;
             numOfTries = 0;
         }

@@ -28,7 +28,7 @@ namespace Sorting_algorithm
                         if (arr[i] < arr[j])
                         {
                             d.Invoke(() => Swap(arr,i, j));
-                            Thread.Sleep(pause/2);
+                            Thread.Sleep(pause);
                         }
                     }
                 }

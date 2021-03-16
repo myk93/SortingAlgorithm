@@ -10,13 +10,13 @@ using System.Windows.Threading;
 
 namespace sortingAlgorithm
 {
-    class quickSort : BaseSort
+    class QuickSort : BaseSort
     {
-        public quickSort() : base()
+        public QuickSort() : base()
         { }
-        public quickSort(int size) : base(size)
+        public QuickSort(int size) : base(size)
         { }
-        public quickSort(Collection<int> size) : base(size)
+        public QuickSort(Collection<int> size) : base(size)
         { }
         public override int DoSort(Collection<int> arr,Dispatcher d = null, int pause = 0)
         {
