@@ -18,7 +18,7 @@ namespace Sorting_algorithm
         { }
         public BubbleSort(Collection<int> size) : base(size)
         { }
-        public override int DoSort(Dispatcher d = null, int pause = 0)
+        public override int DoSort(Collection<int> arr,Dispatcher d = null, int pause = 0)
         {
             Task.Factory.StartNew(() =>
                 {
@@ -31,14 +31,13 @@ namespace Sorting_algorithm
                         {
                             if (arr[j] > arr[j + 1])
                             {
-                                Print();
                                 if (d != null)
                                 {
-                                    d.Invoke( () => Swap(j, j + 1));
-                                    Thread.Sleep(pause);
+                                    d.Invoke( () =>Swap(arr,j, j + 1));
+                                    Thread.Sleep(pause/2);
                                 }
                                 else
-                                    Swap(j, j + 1);
+                                    Swap(arr,j, j + 1);
                                 
                                 numOfSwap++;
                                 IsSorted = false;

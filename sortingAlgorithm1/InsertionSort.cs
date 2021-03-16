@@ -17,7 +17,7 @@ namespace Sorting_algorithm
         public InsertionSort(Collection<int> size) : base(size)
         { }
 
-        public override int DoSort(Dispatcher d = null, int pause = 0)
+        public override int DoSort(Collection<int> arr,Dispatcher d = null, int pause = 0)
         {
             Task.Factory.StartNew(() =>
             {
@@ -27,8 +27,8 @@ namespace Sorting_algorithm
                     {
                         if (arr[i] < arr[j])
                         {
-                            d.Invoke(() => Swap(i, j));
-                            Thread.Sleep(pause);
+                            d.Invoke(() => Swap(arr,i, j));
+                            Thread.Sleep(pause/2);
                         }
                     }
                 }

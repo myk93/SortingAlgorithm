@@ -16,15 +16,15 @@ namespace Sorting_algorithm
         { }
         public BogoSort(Collection<int> arr) : base(arr)
         { }
-        public override int DoSort(Dispatcher d, int pause)
+        public override int DoSort(Collection<int> arr, Dispatcher d, int pause)
         {
             Task.Factory.StartNew(() =>
             {
-                while (!IsSorted())
+                while (!IsSorted(arr))
                 {
 
                     numOfTries++;
-                    d.Invoke(() => Shuffle());
+                    d.Invoke(() => Shuffle(arr));
                     Thread.Sleep(pause);
                     // Print();
 

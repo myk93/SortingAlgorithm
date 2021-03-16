@@ -18,35 +18,35 @@ namespace sortingAlgorithm
         { }
         public quickSort(Collection<int> size) : base(size)
         { }
-        public override int DoSort(Dispatcher d = null, int pause = 0)
+        public override int DoSort(Collection<int> arr,Dispatcher d = null, int pause = 0)
         {
 
-            Quick_Sort(0, arr.Count - 1, d,pause);
+            Quick_Sort(arr,0, arr.Count - 1, d,pause);
 
             return 1;
         }
-        private void Quick_Sort(int left, int right, Dispatcher d,int pause)
+        private void Quick_Sort(Collection<int> arr,int left, int right, Dispatcher d,int pause)
         {
             Task.Factory.StartNew(() =>
             {
                 if (left < right)
                 {
-                    int pivot = Partition(left, right, d,pause);
+                    int pivot = Partition(arr,left, right, d,pause);
 
                     if (pivot > 1)
                     {
-                        Quick_Sort(left, pivot - 1, d,pause);
+                        Quick_Sort(arr,left, pivot - 1, d,pause);
                     }
                     if (pivot + 1 < right)
                     {
-                        Quick_Sort(pivot + 1, right, d,pause);
+                        Quick_Sort(arr,pivot + 1, right, d,pause);
                     }
                 }
             });
 
         }
 
-        private int Partition(int left, int right, Dispatcher d,int pause)
+        private int Partition(Collection<int> arr,int left, int right, Dispatcher d,int pause)
         {
 
             int pivot = arr[left];
@@ -66,7 +66,7 @@ namespace sortingAlgorithm
                 if (left < right)
                 {
                     if (arr[left] == arr[right]) return right;
-                    d.Invoke(() => Swap(left, right));
+                    d.Invoke(() => Swap(arr,left, right));
                     Thread.Sleep(pause);
                 }
                 else

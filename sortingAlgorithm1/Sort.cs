@@ -10,20 +10,21 @@ namespace Sorting_algorithm
     public abstract class BaseSort
     {
         //protected int[] arr;
-        public Collection<int> arr { get; set; }
+        //public Collection<int> arr { get; set; }
+        public static Random rand = new Random();
 
         protected int numOfSwap;
         protected int numOfTries;
 
         /************************************************************************************/
-        public abstract int DoSort(Dispatcher d = null ,int pause = 0);
+        public abstract int DoSort(Collection<int> arr,Dispatcher d = null ,int pause = 0);
 
 
 
         /***********************************************************/
         public BaseSort()
         {
-            arr = new Collection<int>(); ;
+            //arr = new Collection<int>(); ;
             //for (int i = 0; i < 15; i++)
             //{
             //    arr[i] = i + 1;
@@ -35,25 +36,25 @@ namespace Sorting_algorithm
 
         public BaseSort(Collection<int> collection)
         {
-            arr = collection;
-            Shuffle();
+            //arr = collection;
+            Shuffle(collection);
             numOfSwap = 0;
             numOfTries = 0;
         }
 
         public BaseSort(int size)
         {
-            arr = new Collection<int>(); ;
+            //arr = new Collection<int>(); ;
             for (int i = 0; i < size; i++)
             {
-                arr[i] = i + 1;
+                //arr[i] = i + 1;
             }
-            Shuffle();
+            //Shuffle();
             numOfSwap = 0;
             numOfTries = 0;
         }
 
-        protected bool IsSorted()
+        protected bool IsSorted(Collection<int> arr)
         {
             bool isSorted = true;
             
@@ -67,19 +68,18 @@ namespace Sorting_algorithm
             return isSorted;
         }
 
-        public int Maximum()
+        public int Maximum(Collection<int> arr)
         {
             int maximum = arr[0];
             for (int i = 1; i < arr.Count; i++)
                 maximum = arr[i] > maximum ? arr[i] : maximum;
             return maximum;
         }
-        public void Shuffle()
+        public static void Shuffle(Collection<int> arr)
         {
-            Random rand = new Random();
-            for (int i = 0; i < (arr.Count)*arr.Count/70; i++)
+            for (int i = 0; i < (arr.Count)*(arr.Count/70+1); i++)
             {
-                Swap(rand.Next(arr.Count), rand.Next(arr.Count));
+                BaseSort.Swap(arr,rand.Next(arr.Count), rand.Next(arr.Count));
             }
         }
 
@@ -97,22 +97,22 @@ namespace Sorting_algorithm
         //    }
         //    //Thread.Sleep(500);
         //}
-        protected void Swap( int a,  int b)
+        protected static void Swap(Collection<int> arr, int a,  int b)
         {
-            numOfSwap++;
+            
             int temp = arr[a];
             arr[a] = arr[b];
             arr[b] = temp;
         }
 
-        public void Print()
-        {
-            for (int i = 0; i < arr.Count; i++)
-            {
-                Console.Write(arr[i] + " ");
-            }
-            Console.WriteLine();
-        }
+        //public void Print()
+        //{
+        //    for (int i = 0; i < arr.Count; i++)
+        //    {
+        //      //  Console.Write(arr[i] + " ");
+        //    }
+        //    Console.WriteLine();
+        //}
     }
     
 }
