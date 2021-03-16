@@ -14,10 +14,7 @@ namespace sortingAlgorithm
     {
         public SelectionSort() : base()
         { }
-        public SelectionSort(int size) : base(size)
-        { }
-        public SelectionSort(Collection<int> size) : base(size)
-        { }
+
         public override int DoSort(Collection<int> arr, Dispatcher d = null, int pause = 0)
         {
             Task.Factory.StartNew(() =>

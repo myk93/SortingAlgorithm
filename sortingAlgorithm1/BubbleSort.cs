@@ -14,10 +14,7 @@ namespace Sorting_algorithm
     {
         public BubbleSort() : base()
         {}
-        public BubbleSort(int size) : base(size)
-        { }
-        public BubbleSort(Collection<int> size) : base(size)
-        { }
+
         public override int DoSort(Collection<int> arr,Dispatcher d = null, int pause = 0)
         {
             Task.Factory.StartNew(() =>

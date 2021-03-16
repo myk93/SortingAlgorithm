@@ -14,10 +14,7 @@ namespace sortingAlgorithm
     {
         public DoubleSidedSelectionSort() : base()
         { }
-        public DoubleSidedSelectionSort(int size) : base(size)
-        { }
-        public DoubleSidedSelectionSort(Collection<int> size) : base(size)
-        { }
+
         public override int DoSort(Collection<int> arr,Dispatcher d = null, int pause = 0)
         {
             Task.Factory.StartNew(() =>

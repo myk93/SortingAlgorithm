@@ -14,10 +14,6 @@ namespace sortingAlgorithm
     {
         public RadixSort() : base()
         { }
-        public RadixSort(int size) : base(size)
-        { }
-        public RadixSort(Collection<int> arr) : base(arr)
-        { }
 
         public override int DoSort(Collection<int> arr, Dispatcher d = null, int pause = 0)
         {

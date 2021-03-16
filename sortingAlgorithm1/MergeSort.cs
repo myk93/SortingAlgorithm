@@ -14,10 +14,7 @@ namespace sortingAlgorithm
     {
         public MergeSort() : base()
         { }
-        public MergeSort(int size) : base(size)
-        { }
-        public MergeSort(Collection<int> arr) : base(arr)
-        { }
+
 
         public override int DoSort(Collection<int> arr, Dispatcher d = null, int wait = 0)
         {

@@ -19,31 +19,9 @@ namespace Sorting_algorithm
         /************************************************************************************/
         public abstract int DoSort(Collection<int> arr,Dispatcher d = null ,int pause = 0);
 
-
-
         /***********************************************************/
         public BaseSort()
         {
-            numOfSwap = 0;
-            numOfTries = 0;
-        }
-
-        public BaseSort(Collection<int> collection)
-        {
-            //arr = collection;
-           // Shuffle(collection);
-            numOfSwap = 0;
-            numOfTries = 0;
-        }
-
-        public BaseSort(int size)
-        {
-            //arr = new Collection<int>(); ;
-            for (int i = 0; i < size; i++)
-            {
-                //arr[i] = i + 1;
-            }
-            //Shuffle();
             numOfSwap = 0;
             numOfTries = 0;
         }

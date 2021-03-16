@@ -12,10 +12,7 @@ namespace Sorting_algorithm
     {
         public BogoSort() : base()
         { }
-        public BogoSort(int size) : base(size)
-        { }
-        public BogoSort(Collection<int> arr) : base(arr)
-        { }
+
         public override int DoSort(Collection<int> arr, Dispatcher d, int pause)
         {
             Task.Factory.StartNew(() =>

@@ -14,10 +14,7 @@ namespace sortingAlgorithm
     {
         public QuickSort() : base()
         { }
-        public QuickSort(int size) : base(size)
-        { }
-        public QuickSort(Collection<int> size) : base(size)
-        { }
+
         public override int DoSort(Collection<int> arr,Dispatcher d = null, int pause = 0)
         {
 

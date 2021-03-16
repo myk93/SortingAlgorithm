@@ -14,10 +14,6 @@ namespace sortingAlgorithm
     {
         public BucketSort() : base()
         { }
-        public BucketSort(int size) : base(size)
-        { }
-        public BucketSort(Collection<int> size) : base(size)
-        { }
 
         public override int DoSort(Collection<int> arr, Dispatcher d = null, int pause = 0)
         {

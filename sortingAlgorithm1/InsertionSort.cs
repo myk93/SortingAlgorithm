@@ -12,10 +12,6 @@ namespace Sorting_algorithm
     {
         public InsertionSort() : base()
         { }
-        public InsertionSort(int size) : base(size)
-        { }
-        public InsertionSort(Collection<int> size) : base(size)
-        { }
 
         public override int DoSort(Collection<int> arr,Dispatcher d = null, int pause = 0)
         {
