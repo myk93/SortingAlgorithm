@@ -19,11 +19,11 @@ namespace sortingAlgorithm
         public MergeSort(Collection<int> arr) : base(arr)
         { }
 
-        public override int DoSort(Dispatcher d = null, int wait = 0)
+        public override int DoSort(Collection<int> arr, Dispatcher d = null, int wait = 0)
         {
             Task.Factory.StartNew(() =>
             {
-                Collection<int> A = mergSort(arr, d,0,arr.Count/2,arr.Count/2+1,arr.Count);
+                Collection<int> A = mergSort(arr,arr, d,0,arr.Count/2,arr.Count/2+1,arr.Count);
                 for (int i = 0; i < A.Count; i++)
                 {
                     
@@ -47,7 +47,7 @@ namespace sortingAlgorithm
             return current;
         }
         */
-        private Collection<int> mergSort(Collection<int> arrToSort, Dispatcher d , int a1 ,int a2, int b1, int b2)
+        private Collection<int> mergSort(Collection<int> arr, Collection<int> arrToSort, Dispatcher d , int a1 ,int a2, int b1, int b2)
         {
             if (arrToSort.Count <= 1)
             {
@@ -87,8 +87,8 @@ namespace sortingAlgorithm
             //    Thread.Sleep(5);
 
             //}
-            A = mergSort(A, d,a1,a3,a4,a2);
-            B = mergSort(B, d, b1, b3, b4, b2);
+            A = mergSort(arr,A, d,a1,a3,a4,a2);
+            B = mergSort(arr,B, d, b1, b3, b4, b2);
             for (int k = a1; k < a2; k++)
             {
                 d.Invoke(() => arr[k] = A[k - a1]);
