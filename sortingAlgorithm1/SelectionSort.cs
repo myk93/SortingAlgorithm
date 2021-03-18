@@ -30,8 +30,14 @@ namespace sortingAlgorithm
                             smallIndex = j;
                         }
                     }
-                  
-                    d.Invoke(() => Swap(arr,i, smallIndex));
+
+                    d.Invoke(() =>
+                    {
+                        Swap(arr,i,smallIndex);
+                        //int temp = arr[smallIndex];
+                        //arr[smallIndex] = arr[i];
+                        //arr[i] = temp;
+                    });
                     Thread.Sleep(pause);
 
                 }

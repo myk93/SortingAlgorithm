@@ -15,44 +15,24 @@ namespace SortAlgorithm_UI
 {
     class ViewModel : BaseViewModel
     {
-        // properties
-        private ObservableCollection<int> _elementsList;
-        public ObservableCollection<int> ElementsList
-        {
-            get { return _elementsList; }
-            set
-            {
-                _elementsList = value;
-                if (Sorters != null)
-                    foreach (var sorter_vm in Sorters)
-                    {
-                        sorter_vm.ElementListSize = ElementListSize;
-                    }
-                OnPropertyChanged();
-            }
-
-        }
 
         public ObservableCollection<ChartView_VM> Sorters { get; set; }
 
+        private int _elementListSize;
         public int ElementListSize
         {
-            get => ElementsList.Count;
+            get => _elementListSize;
             set
             {
-                ElementsList = new ObservableCollection<int>(Enumerable.Range(0, value));
+                _elementListSize = value;
+                if (Sorters != null)
+                {
+                    foreach (var chartViewVm in Sorters)
+                        chartViewVm.ElementListSize = ElementListSize;
+                }
                 OnPropertyChanged();
             }
         }
-
-        private BaseSort _sorter;
-
-        public BaseSort Sorter
-        {
-            get => _sorter;
-            set { _sorter = value; OnPropertyChanged(); }
-        }
-
 
         //Commands
         public ICommand ShuffleAllCommand { get; set; }
@@ -61,7 +41,7 @@ namespace SortAlgorithm_UI
         {
             foreach (var sorter_vm in Sorters)
             {
-                sorter_vm.Sorter.Shuffle();
+                BaseSort.Shuffle(sorter_vm.ElementsList);
             }
         }
 
@@ -71,18 +51,13 @@ namespace SortAlgorithm_UI
         {
             var dispatcher = Dispatcher.CurrentDispatcher;
             foreach (var sorter_vm in Sorters)
-            {
-                Task.Run(() => sorter_vm.Sorter.DoSort(dispatcher, 10));
-            }
+                Task.Run(() => sorter_vm.Sort(dispatcher));
         }
 
         // Constructor
         public ViewModel()
         {
             ElementListSize = 100;
-            ElementsList = new ObservableCollection<int>(Enumerable.Range(0, ElementListSize));
-            Sorter = new BubbleSort(ElementsList);
-            
             // Get all types of sorter
             var baseSortType = typeof(BaseSort);
 

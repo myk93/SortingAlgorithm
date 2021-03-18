@@ -28,7 +28,7 @@
                 <TextBlock Text="Number of elements: "/>
                 <TextBlock Text="{Binding ElementListSize}"/>
             </StackPanel>
-            <Slider Minimum="3" Maximum="500" Value="{Binding ElementListSize}"/>
+            <Slider Minimum="3" Maximum="500" Value="{Binding ElementListSize}" TickFrequency="50" TickPlacement="BottomRight" IsMoveToPointEnabled="True"/>
             <Button Content="Shuffle" Command="{Binding ShuffleAllCommand}" />
             <ListBox ItemsSource="{Binding Sorters}"></ListBox>
         </StackPanel>

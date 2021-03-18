@@ -45,7 +45,7 @@ namespace sortingAlgorithm
                 }
                 for (int i = 0; i < num; i++)
                 {
-                    d.Invoke(() => iSort.DoSort( temp[i]));
+                    d.Invoke(() => iSort.DoSort( temp[i],d));
                 }
                 Thread.Sleep(500);
                 k = 0;

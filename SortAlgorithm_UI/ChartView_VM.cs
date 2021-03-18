@@ -65,38 +65,22 @@ namespace SortAlgorithm_UI
 
         public void Shuffle(object param)
         {
-            if (Sorter.arr != ElementsList)
-                Sorter.arr = ElementsList;
-            Sorter.Shuffle();
+            BaseSort.Shuffle(ElementsList);
         }
 
         public ICommand SortCommand { get; set; }
 
-        public void Sort(object param)
+        public void Sort(object dispatcher)
         {
-            if (Sorter.arr != ElementsList)
-                Sorter.arr = ElementsList;
-            Sorter.DoSort(Dispatcher.CurrentDispatcher, 5);
-        }
-
-        public ChartView_VM()
-        {
-            ElementListSize = 100;
-            ElementsList = new ObservableCollection<int>(Enumerable.Range(0, ElementListSize));
-            Sorter = new BubbleSort(ElementsList);
-
-            // commands implementation
-            ShuffleCommand = new RelayCommand(Shuffle);
-            SortCommand = new RelayCommand(Sort);
+            var d = (dispatcher as Dispatcher) ?? Dispatcher.CurrentDispatcher;
+            Sorter.DoSort(ElementsList, d, 5);
         }
 
         public ChartView_VM(BaseSort sorter)
         {
             ElementListSize = 200;
             ElementsList = new ObservableCollection<int>(Enumerable.Range(0, ElementListSize));
-
             Sorter = sorter;
-            sorter.arr = ElementsList;
 
             // commands implementation
             ShuffleCommand = new RelayCommand(Shuffle);
@@ -111,7 +95,7 @@ namespace SortAlgorithm_UI
 
         public override string ToString()
         {
-            return Sorter.GetType().Name;
+            return Sorter?.GetType().Name;
         }
     }
 }
