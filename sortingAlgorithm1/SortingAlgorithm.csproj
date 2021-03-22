@@ -45,7 +45,10 @@
     <Compile Include="BogoSort.cs" />
     <Compile Include="BubbleSort.cs" />
     <Compile Include="BucketSort.cs" />
+    <Compile Include="CocktailSort.cs" />
+    <Compile Include="CombSort.cs" />
     <Compile Include="DoubleSidedBubbleSort.cs" />
+    <Compile Include="PigeonHoleSort.cs" />
     <Compile Include="quickSort.cs" />
     <Compile Include="radixSort.cs" />
     <Compile Include="SelectionSort.cs" />

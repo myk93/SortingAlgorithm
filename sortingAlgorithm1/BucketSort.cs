@@ -14,13 +14,30 @@ namespace sortingAlgorithm
     {
         public BucketSort() : base()
         { }
-
+        private void Sort(Collection<int> arr, int start, int end, Dispatcher d, int pause)
+        {
+            Task.Factory.StartNew(() =>
+            {
+                for (int i = start; i < end; i++)
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (arr[i] < arr[j])
+                        {
+                            d.Invoke(() => Swap(arr, i, j));
+                            Thread.Sleep(pause/5+1);
+                        }
+                    }
+                }
+            });
+ 
+        }
         public override int DoSort(Collection<int> arr, Dispatcher d = null, int pause = 0)
         {
             InsertionSort iSort = new InsertionSort();
             Task.Factory.StartNew(() =>
             {
-                List< Collection<int> > temp = new List<Collection<int>>();
+                List<Collection<int>> temp = new List<Collection<int>>();
                 int num = 8;
                 for (int i = 1; i <= num + 1; i++)
                 {
@@ -43,21 +60,34 @@ namespace sortingAlgorithm
                         k++;
                     }
                 }
-                for (int i = 0; i < num; i++)
+                int start = 0;
+                int end = temp[0].Count;
+                for (int i = 0; i < num-1; i++)
                 {
-                    d.Invoke(() => iSort.DoSort( temp[i],d));
-                }
-                Thread.Sleep(500);
-                k = 0;
-                foreach (var item in temp)
-                {
-                    for (int s = 0; s < item.Count; s++)
+
+                    d.Invoke(() =>
                     {
-                        Thread.Sleep(pause);
-                        d.Invoke(() => arr[k] = item[s]);
-                        k++;
-                    }
+                        Sort(arr, start, end, d, pause);
+                    });
+                    start = end;
+                    end = end + temp[i].Count;
+
                 }
+                d.Invoke(() =>
+                {
+                    Sort(arr, start, arr.Count, d, pause);
+                });
+                //Thread.Sleep((int)(arr.Count*1.5));
+                //k = 0;
+                //foreach (var item in temp)
+                //{
+                //    for (int s = 0; s < item.Count; s++)
+                //    {
+                //        Thread.Sleep(pause);
+                //        d.Invoke(() => arr[k] = item[s]);
+                //        k++;
+                //    }
+                //}
             });
 
             return 0;
