@@ -31,11 +31,13 @@ namespace sortingAlgorithm
                         if (arr[j] < arr[smallIndex])
                         {
                             smallIndex = j;
+                            Thread.Sleep(pause);
+
                         }
+
                     }
-                  
-                    d.Invoke(() => Swap(i, smallIndex));
                     Thread.Sleep(pause);
+                    d.Invoke(() => Swap(i, smallIndex));
 
                 }
             }
