@@ -56,14 +56,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BaseViewModel.cs" />
-    <Compile Include="ChartView.xaml.cs">
+    <Compile Include="Chart\ChartView.xaml.cs">
       <DependentUpon>ChartView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChartView_VM.cs" />
+    <Compile Include="Chart\ChartView_VM.cs" />
     <Compile Include="Converters.cs" />
     <Compile Include="RelayCommands.cs" />
     <Compile Include="ViewModel.cs" />
-    <Page Include="ChartView.xaml">
+    <Page Include="Chart\ChartView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,8 +112,6 @@
       <Name>SortingAlgorithm</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Chart\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

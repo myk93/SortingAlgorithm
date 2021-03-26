@@ -9,13 +9,17 @@ using Sorting_algorithm;
 using sortingAlgorithm;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace SortAlgorithm_UI
 {
     class ViewModel : BaseViewModel
     {
+        // fields
+        private readonly IEnumerable<ChartView_VM> selectedSorter;
 
+        // properties
         public ObservableCollection<ChartView_VM> Sorters { get; set; }
 
         private int _elementListSize;
@@ -39,9 +43,9 @@ namespace SortAlgorithm_UI
 
         public void ShuffleAll(object param)
         {
-            foreach (var sorter_vm in Sorters)
+            foreach (var sorterVm in selectedSorter)
             {
-                BaseSort.Shuffle(sorter_vm.ElementsList);
+                BaseSort.Shuffle(sorterVm.ElementsList);
             }
         }
 
@@ -50,8 +54,24 @@ namespace SortAlgorithm_UI
         public void SortAll(object param)
         {
             var dispatcher = Dispatcher.CurrentDispatcher;
-            foreach (var sorter_vm in Sorters)
-                Task.Run(() => sorter_vm.Sort(dispatcher));
+            foreach (var sorterVm in selectedSorter)
+                Task.Run(() => sorterVm.Sort(dispatcher));
+        }
+
+
+        public ICommand SelectAllCommand { get; set; }
+
+        public void SelectAll(object param)
+        {
+            foreach (var sorterVm in Sorters)
+                sorterVm.IsSelected = true;
+        }
+        public ICommand UnSelectAllCommand { get; set; }
+
+        public void UnSelectAll(object param)
+        {
+            foreach (var sorterVm in Sorters)
+                sorterVm.IsSelected = false;
         }
 
         // Constructor
@@ -75,9 +95,13 @@ namespace SortAlgorithm_UI
 
             Sorters = new ObservableCollection<ChartView_VM>(vms);
 
+            selectedSorter = Sorters.Where(s => s.IsSelected);
+
             // commands implementation
             ShuffleAllCommand = new RelayCommand(ShuffleAll);
             SortAllCommand = new RelayCommand(SortAll);
+            SelectAllCommand = new RelayCommand(SelectAll);
+            UnSelectAllCommand = new RelayCommand(UnSelectAll);
         }
 
     }

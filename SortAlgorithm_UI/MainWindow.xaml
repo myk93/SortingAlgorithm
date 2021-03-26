@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SortAlgorithm_UI"
         mc:Ignorable="d"
         Background="LightGray"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="626" Width="1086">
 
     <Window.DataContext>
         <local:ViewModel/>
@@ -18,30 +18,47 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="179"/>
+            <ColumnDefinition Width="166"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Vertical" Margin="10">
             <Button Content="Sort All" Command="{Binding SortAllCommand}" />
+            <Button Content="Shuffle" Command="{Binding ShuffleAllCommand}" />
+
+            <Separator Margin="7"/>
+
+            <Button Content="Select All" Command="{Binding SelectAllCommand}"/>
+            <Button Content="Unselect All"  Command="{Binding UnSelectAllCommand}"/>
+
+            <Separator Margin="7"/>
+
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Number of elements: "/>
                 <TextBlock Text="{Binding ElementListSize}"/>
             </StackPanel>
             <Slider Minimum="3" Maximum="500" Value="{Binding ElementListSize}" TickFrequency="50" TickPlacement="BottomRight" IsMoveToPointEnabled="True"/>
-            <Button Content="Shuffle" Command="{Binding ShuffleAllCommand}" />
-            <ListBox ItemsSource="{Binding Sorters}"></ListBox>
         </StackPanel>
 
         <ItemsControl Grid.Column="1"  ItemsSource="{Binding Sorters}" BorderThickness="1" BorderBrush="Gray" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid/>
+                    <UniformGrid Columns="2"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <local:ChartView DataContext="{Binding}"/>
+                    <Grid>
+                        <local:ChartView DataContext="{Binding}" IsEnabled="{Binding Path=IsSelected}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding ElementListSize}"/>
+                                <Slider Minimum="3" Maximum="2000" Value="{Binding ElementListSize}" TickFrequency="50" IsMoveToPointEnabled="True" Width="200"/>
+                            </StackPanel>
+                            <CheckBox Content="Selected" IsChecked="{Binding IsSelected}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Label Content="{Binding }" Foreground="Blue"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
