@@ -17,6 +17,7 @@ namespace sortingAlgorithm
 
         public override int DoSort(Collection<int> arr,Dispatcher d = null, int pause = 0)
         {
+            pause *= 3;
             Task.Factory.StartNew(() =>
             {
                 for (int i = 0, j = arr.Count - 1; i < j; i++, j--)

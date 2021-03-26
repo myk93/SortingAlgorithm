@@ -25,7 +25,7 @@ namespace sortingAlgorithm
                         if (arr[i] < arr[j])
                         {
                             d.Invoke(() => Swap(arr, i, j));
-                            Thread.Sleep(pause/5+1);
+                            Thread.Sleep(pause/3+1);
                         }
                     }
                 }
@@ -34,7 +34,8 @@ namespace sortingAlgorithm
         }
         public override int DoSort(Collection<int> arr, Dispatcher d = null, int pause = 0)
         {
-            InsertionSort iSort = new InsertionSort();
+            pause *= 2;
+            //InsertionSort iSort = new InsertionSort();
             Task.Factory.StartNew(() =>
             {
                 List<Collection<int>> temp = new List<Collection<int>>();
@@ -70,7 +71,7 @@ namespace sortingAlgorithm
                         Sort(arr, start, end, d, pause);
                     });
                     start = end;
-                    end = end + temp[i].Count;
+                    end += temp[i].Count;
 
                 }
                 d.Invoke(() =>

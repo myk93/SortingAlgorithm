@@ -23,9 +23,8 @@ namespace sortingAlgorithm
                 Collection<int> A = MergSort(arr,arr, d,0,arr.Count/2,arr.Count/2+1,arr.Count);
                 for (int i = 0; i < A.Count; i++)
                 {
-                    
-                    d.Invoke(() => arr[i] = A[i]);
-                    Thread.Sleep(wait);
+                     d.Invoke(() => arr[i] = A[i]);
+                    Thread.Sleep(0);
 
                 }
             });

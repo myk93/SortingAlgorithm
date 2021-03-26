@@ -17,6 +17,7 @@ namespace sortingAlgorithm
 
         public override int DoSort(Collection<int> arr, Dispatcher d = null, int pause = 0)
         {
+           // pause *= 2;
             Task.Factory.StartNew(() =>
             {
                 int smallIndex = 0;
@@ -27,18 +28,18 @@ namespace sortingAlgorithm
                     {
                         if (arr[j] < arr[smallIndex])
                         {
-                            smallIndex = j;
+                            
+                            d.Invoke(()=> smallIndex = j);
+                            Thread.Sleep(pause);
+
                         }
                     }
 
                     d.Invoke(() =>
                     {
                         Swap(arr,i,smallIndex);
-                        //int temp = arr[smallIndex];
-                        //arr[smallIndex] = arr[i];
-                        //arr[i] = temp;
+
                     });
-                    Thread.Sleep(pause);
 
                 }
             }
