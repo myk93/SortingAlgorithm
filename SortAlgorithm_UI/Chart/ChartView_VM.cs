@@ -20,6 +20,14 @@ namespace SortAlgorithm_UI
 
         }
 
+        private bool _isSelected;
+
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set { _isSelected = value; OnPropertyChanged(); }
+        }
+
         private int _elementListSize;
 
         public int ElementListSize
@@ -78,7 +86,8 @@ namespace SortAlgorithm_UI
 
         public ChartView_VM(BaseSort sorter)
         {
-            ElementListSize = 200;
+            IsSelected = true;
+            ElementListSize = 100;
             ElementsList = new ObservableCollection<int>(Enumerable.Range(0, ElementListSize));
             Sorter = sorter;
 
