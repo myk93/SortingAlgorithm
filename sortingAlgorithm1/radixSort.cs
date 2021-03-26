@@ -14,16 +14,12 @@ namespace sortingAlgorithm
     {
         public RadixSort() : base()
         { }
-        public RadixSort(int size) : base(size)
-        { }
-        public RadixSort(Collection<int> arr) : base(arr)
-        { }
 
-        public override int DoSort(Dispatcher d = null, int pause = 0)
+        public override int DoSort(Collection<int> arr, Dispatcher d = null, int pause = 0)
         {
             Task.Factory.StartNew(() =>
             {
-                int max = this.Maximum();
+                int max = this.Maximum(arr);
                 max = (int)Math.Log10(max);
                 List<List<int>> cups = new List<List<int>>();
                 for (int i = 0; i < 10; i++)

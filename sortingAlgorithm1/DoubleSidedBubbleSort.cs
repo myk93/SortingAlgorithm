@@ -14,11 +14,8 @@ namespace sortingAlgorithm
     {
         public DoubleSidedSelectionSort() : base()
         { }
-        public DoubleSidedSelectionSort(int size) : base(size)
-        { }
-        public DoubleSidedSelectionSort(Collection<int> size) : base(size)
-        { }
-        public override int DoSort(Dispatcher d = null, int pause = 0)
+
+        public override int DoSort(Collection<int> arr,Dispatcher d = null, int pause = 0)
         {
             Task.Factory.StartNew(() =>
             {
@@ -41,17 +38,17 @@ namespace sortingAlgorithm
                         }
                     }
 
-                    d.Invoke(() => Swap(i, min_i));
+                    d.Invoke(() => Swap(arr,i, min_i));
                     Thread.Sleep(pause);
                       if (arr[min_i] == max)
                     {
-                        d.Invoke(() => Swap(j, min_i));
+                        d.Invoke(() => Swap(arr,j, min_i));
                         Thread.Sleep(pause);
 
                     }
                     else
                     {
-                        d.Invoke(() => Swap(j, max_i));
+                        d.Invoke(() => Swap(arr,j, max_i));
                         Thread.Sleep(pause);
                     }
                 }

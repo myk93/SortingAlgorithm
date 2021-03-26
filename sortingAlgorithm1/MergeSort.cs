@@ -14,16 +14,13 @@ namespace sortingAlgorithm
     {
         public MergeSort() : base()
         { }
-        public MergeSort(int size) : base(size)
-        { }
-        public MergeSort(Collection<int> arr) : base(arr)
-        { }
 
-        public override int DoSort(Dispatcher d = null, int wait = 0)
+
+        public override int DoSort(Collection<int> arr, Dispatcher d = null, int wait = 0)
         {
             Task.Factory.StartNew(() =>
             {
-                Collection<int> A = mergSort(arr, d,0,arr.Count/2,arr.Count/2+1,arr.Count);
+                Collection<int> A = MergSort(arr,arr, d,0,arr.Count/2,arr.Count/2+1,arr.Count);
                 for (int i = 0; i < A.Count; i++)
                 {
                     
@@ -47,7 +44,7 @@ namespace sortingAlgorithm
             return current;
         }
         */
-        private Collection<int> mergSort(Collection<int> arrToSort, Dispatcher d , int a1 ,int a2, int b1, int b2)
+        private Collection<int> MergSort(Collection<int> arr, Collection<int> arrToSort, Dispatcher d , int a1 ,int a2, int b1, int b2)
         {
             if (arrToSort.Count <= 1)
             {
@@ -87,8 +84,8 @@ namespace sortingAlgorithm
             //    Thread.Sleep(5);
 
             //}
-            A = mergSort(A, d,a1,a3,a4,a2);
-            B = mergSort(B, d, b1, b3, b4, b2);
+            A = MergSort(arr,A, d,a1,a3,a4,a2);
+            B = MergSort(arr,B, d, b1, b3, b4, b2);
             for (int k = a1; k < a2; k++)
             {
                 d.Invoke(() => arr[k] = A[k - a1]);
@@ -110,12 +107,12 @@ namespace sortingAlgorithm
                     Thread.Sleep(1);
                 }
             }
-            arrToSort = merge(A, B);
+            arrToSort = Merge(A, B);
            
             return arrToSort;
         }
 
-        private Collection<int> merge(Collection<int> A, Collection<int> B)
+        private Collection<int> Merge(Collection<int> A, Collection<int> B)
         {
             Collection<int> toReturn = new Collection<int>();
             for (int i = 0, j = 0; i < A.Count || j < B.Count;)

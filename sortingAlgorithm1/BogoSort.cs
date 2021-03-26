@@ -1,38 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Threading;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Collections.ObjectModel;
+//using System.Text;
+//using System.Threading;
+//using System.Threading.Tasks;
+//using System.Windows.Threading;
 
-namespace Sorting_algorithm
-{
-    public class BogoSort : BaseSort
-    {
-        public BogoSort() : base()
-        { }
-        public BogoSort(int size) : base(size)
-        { }
-        public BogoSort(Collection<int> arr) : base(arr)
-        { }
-        public override int DoSort(Dispatcher d, int pause)
-        {
-            Task.Factory.StartNew(() =>
-            {
-                while (!IsSorted())
-                {
+//namespace Sorting_algorithm
+//{
+//    public class BogoSort : BaseSort
+//    {
+//        public BogoSort() : base()
+//        { }
 
-                    numOfTries++;
-                    d.Invoke(() => Shuffle());
-                    Thread.Sleep(pause);
-                    // Print();
+//        public override int DoSort(Collection<int> arr, Dispatcher d, int pause)
+//        {
+//            Task.Factory.StartNew(() =>
+//            {
+//                while (!IsSorted(arr))
+//                {
 
-                }
-            });
-            return numOfSwap;
+//                    numOfTries++;
+//                    d.Invoke(() => Shuffle(arr));
+//                    Thread.Sleep(pause);
+//                    // Print();
 
-        }
+//                }
+//            });
+//            return numOfSwap;
 
-    }
-}
+//        }
+
+//    }
+//}

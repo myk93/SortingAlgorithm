@@ -14,11 +14,8 @@ namespace sortingAlgorithm
     {
         public SelectionSort() : base()
         { }
-        public SelectionSort(int size) : base(size)
-        { }
-        public SelectionSort(Collection<int> size) : base(size)
-        { }
-        public override int DoSort(Dispatcher d = null, int pause = 0)
+
+        public override int DoSort(Collection<int> arr, Dispatcher d = null, int pause = 0)
         {
             Task.Factory.StartNew(() =>
             {
@@ -36,8 +33,15 @@ namespace sortingAlgorithm
                         }
 
                     }
+
+                    d.Invoke(() =>
+                    {
+                        Swap(arr,i,smallIndex);
+                        //int temp = arr[smallIndex];
+                        //arr[smallIndex] = arr[i];
+                        //arr[i] = temp;
+                    });
                     Thread.Sleep(pause);
-                    d.Invoke(() => Swap(i, smallIndex));
 
                 }
             }

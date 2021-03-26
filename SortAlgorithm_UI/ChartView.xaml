@@ -50,7 +50,7 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <Slider Minimum="3" Maximum="2000" Value="{Binding ElementListSize}"/>
+        <Slider Minimum="3" Maximum="2000" Value="{Binding ElementListSize}" TickFrequency="50" TickPlacement="BottomRight" IsMoveToPointEnabled="True"/>
         <Label Content="{Binding }" Foreground="Blue" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left"/>
     </Grid>
 </UserControl>
