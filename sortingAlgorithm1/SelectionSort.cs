@@ -28,11 +28,12 @@ namespace sortingAlgorithm
                     {
                         if (arr[j] < arr[smallIndex])
                         {
-                            
-                            d.Invoke(()=> smallIndex = j);
+
+                            smallIndex = j;
                             Thread.Sleep(pause);
 
                         }
+
                     }
 
                     d.Invoke(() =>
