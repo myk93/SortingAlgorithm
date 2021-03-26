@@ -45,7 +45,7 @@ namespace sortingAlgorithm
 
         private int Partition(Collection<int> arr,int left, int right, Dispatcher d,int pause)
         {
-
+            pause *= 2;
             int pivot = arr[left];
             while (true)
             {

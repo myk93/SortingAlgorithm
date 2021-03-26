@@ -10,33 +10,27 @@ using System.Windows;
 
 namespace Sorting_algorithm
 {
-    public class BubbleSort :BaseSort
+    public class BubbleSort : BaseSort
     {
         public BubbleSort() : base()
-        {}
-
-        public override int DoSort(Collection<int> arr,Dispatcher d = null, int pause = 0)
         {
+        }
+
+        public override int DoSort(Collection<int> arr, Dispatcher d = null, int pause = 0)
+        {
+           // pause /= pause;
             Task.Factory.StartNew(() =>
                 {
                     bool IsSorted;
                     for (int i = arr.Count - 1; (i >= 1); i--)
                     {
                         IsSorted = true;
-                        numOfTries++;
-                        for (int j = 0; j < i ; j++)
+                        for (int j = 0; j < i; j++)
                         {
                             if (arr[j] > arr[j + 1])
                             {
-                                if (d != null)
-                                {
-                                    d.Invoke( () =>Swap(arr,j, j + 1));
-                                    Thread.Sleep(pause/2);
-                                }
-                                else
-                                    Swap(arr,j, j + 1);
-                                
-                                numOfSwap++;
+                                d.Invoke(() => Swap(arr, j, j + 1));
+                                Thread.Sleep(1);
                                 IsSorted = false;
                             }
                         }

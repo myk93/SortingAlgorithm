@@ -48,6 +48,7 @@
     <Compile Include="CocktailSort.cs" />
     <Compile Include="CombSort.cs" />
     <Compile Include="DoubleSidedBubbleSort.cs" />
+    <Compile Include="IMergeSort.cs" />
     <Compile Include="PigeonHoleSort.cs" />
     <Compile Include="quickSort.cs" />
     <Compile Include="radixSort.cs" />

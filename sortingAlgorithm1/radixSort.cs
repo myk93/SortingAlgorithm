@@ -17,6 +17,7 @@ namespace sortingAlgorithm
 
         public override int DoSort(Collection<int> arr, Dispatcher d = null, int pause = 0)
         {
+            //pause *= 2;
             Task.Factory.StartNew(() =>
             {
                 int max = this.Maximum(arr);
