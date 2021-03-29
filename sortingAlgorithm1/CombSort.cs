@@ -31,11 +31,11 @@ namespace sortingAlgorithm1
                 int gap = n;
                 bool swapped = true;
 
-                while (gap != 1 || swapped == true)
+                while ((gap != 1 || swapped == true )&& !IsStop)
                 {
                     gap = GetNextGap(gap);
                     swapped = false;
-                    for (int i = 0; i < n - gap; i++)
+                    for (int i = 0; i < n - gap && !IsStop; i++)
                     {
                         if (arr[i] > arr[i + gap])
                         {

@@ -18,9 +18,9 @@ namespace sortingAlgorithm
         {
             Task.Factory.StartNew(() =>
             {
-                for (int i = start; i < end; i++)
+                for (int i = start; i < end && !IsStop; i++)
                 {
-                    for (int j = 0; j < i; j++)
+                    for (int j = 0; j < i && !IsStop; j++)
                     {
                         if (arr[i] < arr[j])
                         {
@@ -63,7 +63,7 @@ namespace sortingAlgorithm
                 }
                 int start = 0;
                 int end = temp[0].Count;
-                for (int i = 0; i < num-1; i++)
+                for (int i = 0; i < num- 1 && !IsStop; i++)
                 {
 
                     d.Invoke(() =>

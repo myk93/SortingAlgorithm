@@ -22,10 +22,10 @@ namespace Sorting_algorithm
             Task.Factory.StartNew(() =>
                 {
                     bool IsSorted;
-                    for (int i = arr.Count - 1; (i >= 1); i--)
+                    for (int i = arr.Count - 1; (i >= 1) && !IsStop; i--)
                     {
                         IsSorted = true;
-                        for (int j = 0; j < i; j++)
+                        for (int j = 0; j < i && !IsStop; j++)
                         {
                             if (arr[j] > arr[j + 1])
                             {

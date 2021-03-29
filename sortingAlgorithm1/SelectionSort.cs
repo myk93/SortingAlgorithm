@@ -21,10 +21,10 @@ namespace sortingAlgorithm
             Task.Factory.StartNew(() =>
             {
                 int smallIndex = 0;
-                for (int i = 0; i < arr.Count; i++)
+                for (int i = 0; i < arr.Count && !IsStop; i++)
                 {
                     smallIndex = i;
-                    for (int j = i; j < arr.Count; j++)
+                    for (int j = i; j < arr.Count && !IsStop; j++)
                     {
                         if (arr[j] < arr[smallIndex])
                         {

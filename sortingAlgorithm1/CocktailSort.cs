@@ -20,7 +20,7 @@ namespace sortingAlgorithm1
             Task.Factory.StartNew(() =>
             {
                 pause /= 2;
-                while (swapped == true)
+                while (swapped == true && !IsStop)
                 {
 
                     // reset the swapped flag on entering the
@@ -30,7 +30,7 @@ namespace sortingAlgorithm1
 
                     // loop from bottom to top same as
                     // the bubble sort
-                    for (int i = start; i < end - 1; ++i)
+                    for (int i = start; i < end - 1 && !IsStop; ++i)
                     {
                         if (arr[i] > arr[i + 1])
                         {
@@ -44,7 +44,7 @@ namespace sortingAlgorithm1
                         break;
                     swapped = false;
                     end--; ;
-                    for (int i = end - 1; i >= start; i--)
+                    for (int i = end - 1; i >= start && !IsStop; i--)
                     {
                         if (arr[i] > arr[i + 1])
                         {
