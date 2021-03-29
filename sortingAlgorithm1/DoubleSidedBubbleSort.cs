@@ -20,11 +20,11 @@ namespace sortingAlgorithm
             pause *= 3;
             Task.Factory.StartNew(() =>
             {
-                for (int i = 0, j = arr.Count - 1; i < j; i++, j--)
+                for (int i = 0, j = arr.Count - 1; i < j && !IsStop; i++, j--)
                 {
                     int min = arr[i], max = arr[i];
                     int min_i = i, max_i = i;
-                    for (int k = i; k <= j; k++)
+                    for (int k = i; k <= j && !IsStop; k++)
                     {
                         if (arr[k] > max)
                         {

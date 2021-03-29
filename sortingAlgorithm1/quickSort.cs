@@ -26,7 +26,7 @@ namespace sortingAlgorithm
         {
             Task.Factory.StartNew(() =>
             {
-                if (left < right)
+                if (left < right && !IsStop)
                 {
                     int pivot = Partition(arr,left, right, d,pause);
 
@@ -47,20 +47,20 @@ namespace sortingAlgorithm
         {
             pause *= 2;
             int pivot = arr[left];
-            while (true)
+            while (true && !IsStop)
             {
 
-                while (arr[left] < pivot)
+                while (arr[left] < pivot && !IsStop)
                 {
                     left++;
                 }
 
-                while (arr[right] > pivot)
+                while (arr[right] > pivot && !IsStop)
                 {
                     right--;
                 }
 
-                if (left < right)
+                if (left < right && !IsStop)
                 {
                     if (arr[left] == arr[right]) return right;
                     d.Invoke(() => Swap(arr,left, right));
@@ -71,6 +71,7 @@ namespace sortingAlgorithm
                     return right;
                 }
             }
+            return -1;
         }
 
     }

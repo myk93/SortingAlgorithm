@@ -17,9 +17,9 @@ namespace Sorting_algorithm
         {
             Task.Factory.StartNew(() =>
             {
-                for (int i = 0; i < arr.Count; i++)
+                for (int i = 0; i < arr.Count && !IsStop; i++)
                 {
-                    for (int j = 0; j < i; j++)
+                    for (int j = 0; j < i && !IsStop; j++)
                     {
                         if (arr[i] < arr[j])
                         {

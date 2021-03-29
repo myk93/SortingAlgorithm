@@ -12,9 +12,12 @@ namespace Sorting_algorithm
         //protected int[] arr;
         //public Collection<int> arr { get; set; }
         public static Random rand = new Random();
+        private bool isStop = false;
 
         protected int numOfSwap;
         protected int numOfTries;
+
+        public bool IsStop { get => isStop; set => isStop = value; }
 
         /************************************************************************************/
         public abstract int DoSort(Collection<int> arr,Dispatcher d = null ,int pause = 0);
