@@ -8,10 +8,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            BaseSort sort = new MergeSort(15);
-            //sort.DoSort();
-            Console.WriteLine("Hello World!");
-            sort.Print();
+
         }
     }
 }
