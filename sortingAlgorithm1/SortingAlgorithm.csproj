@@ -53,6 +53,7 @@
     <Compile Include="quickSort.cs" />
     <Compile Include="radixSort.cs" />
     <Compile Include="SelectionSort.cs" />
+    <Compile Include="ShellSort.cs" />
     <Compile Include="subArray.cs" />
     <Compile Include="InsertionSort.cs" />
     <Compile Include="MergeSort.cs" />
