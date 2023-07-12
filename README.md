@@ -7,17 +7,26 @@ Sorting Algorithm Visualization is a project aimed at helping developers underst
 Visualization of the following sorting algorithms:
 
 `Bubble Sort`
+
 `Selection Sort`
+
 `Insertion Sort`
+
 `Merge Sort`
+
 `Quick Sort`
+
 `Cocktail Sort`
+
 `Shell Sort`
+
 `Bucket Sort`
+
 `Radix Sort`
+
 Random data generation: Users can specify the number of elements and range for the data to be sorted.
 
-###Step-by-step visualization:
+### Step-by-step visualization:
 The application animates the sorting process step by step, providing visual cues and highlighting the elements being compared and swapped.
 
 ## Technologies
