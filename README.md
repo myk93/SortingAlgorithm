@@ -6,11 +6,15 @@ Sorting Algorithm Visualization is a project aimed at helping developers underst
 ## Features
 Visualization of the following sorting algorithms:
 
-### Bubble Sort
-### Selection Sort
-### Insertion Sort
-### Merge Sort
-### Quick Sort
+`Bubble Sort`
+`Selection Sort`
+`Insertion Sort`
+`Merge Sort`
+`Quick Sort`
+`Cocktail Sort`
+`Shell Sort`
+`Bucket Sort`
+`Radix Sort`
 Random data generation: Users can specify the number of elements and range for the data to be sorted.
 
 ###Step-by-step visualization:
@@ -43,7 +47,8 @@ Specify the number of elements and the range for the data to be sorted.
 
 Click the "shuffle" button then "sort" to begin the visualization.
 
-![image](https://github.com/myk93/SortingAlgorithm/assets/54366213/833ffce8-83c0-44b9-af55-941ecaff9a2b)
+![image](https://github.com/myk93/SortingAlgorithm/assets/54366213/71c04496-db39-4696-991d-5f16547eb3ee)
+
 ![image](https://github.com/myk93/SortingAlgorithm/assets/54366213/32ce3972-2a28-4c33-b4ef-d6a3c7b22480)
 
 
